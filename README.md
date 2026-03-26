@@ -225,34 +225,6 @@ The engine gets smarter over time:
 
 ---
 
-## What Makes This Sellable
-
-### Zero Personal Data
-- No Brian, no House of Fraud, no Safeguard, no SaySo
-- Example client (Meridian) is completely fictional
-- Fully customizable for any founder/company
-- Ready to resell or white-label
-
-### Production-Ready
-- All files included and properly structured
-- No missing components
-- Clear documentation at every level
-- Tested folder hierarchy
-
-### Buyer-Friendly
-- `/setup` wizard handles all configuration
-- FOUNDER_GUIDE and TEAM_GUIDE explain what they need to do
-- anti-ai-rules ensure consistent quality
-- Example client shows what "good" looks like
-
-### Extensible
-- New clients added via `/setup`
-- New channels added to cadence.yaml
-- Voice profiles are living documents (update via `/calibrate-voice`)
-- Performance system improves over time
-
----
-
 ## Next Steps After Deploying
 
 1. **Run `/setup`** for first-time configuration
