@@ -1,0 +1,44 @@
+{
+  "skill_name": "voice-fingerprint",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a personal LinkedIn post for Brian about first-party fraud — specifically, what happens when your own customers are the fraudsters. The post should be 150–300 words, personal voice (Brian speaking as 'I'), and take a clear position. Before you write anything, load the voice fingerprint skill at /sessions/charming-eloquent-curie/mnt/ContentEngine/.claude/skills/voice-fingerprint/ for the 'brian' client.\n\nSave the draft to: /sessions/charming-eloquent-curie/mnt/ContentEngine/drafts/brian/personal-linkedin/2026-03-19_personal_personal-linkedin_first-party-fraud-eval.md",
+      "expected_output": "A personal LinkedIn post that: (1) opens on a specific claim, scenario, or observation — not context-setting like 'In today's fraud landscape' or 'Have you ever wondered', (2) contains no em dashes anywhere, (3) anchors claims to something specific — a number, a named fraud type, a decision, a timeframe — not just abstract statements about 'the industry', (4) states a position directly without hedging ('in my experience', 'tends to', 'might suggest'), (5) ends when the thought ends — no trailing question or explanation of the implication.",
+      "files": [],
+      "expectations": [
+        "The opening line drops directly into a specific claim, scenario, or observation — not context-setting language",
+        "No em dashes (—) appear anywhere in the generated draft",
+        "At least one specific anchor is present — a number, named fraud type, named tool, decision, or timeframe",
+        "No hedging phrases present — no 'in my experience', 'tend to', 'might suggest', 'seems like', or similar",
+        "The post ends on the landing thought — no trailing question or meta-commentary after the final point"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Check this draft against Brian's voice fingerprint and tell me what's off:\n\n/sessions/charming-eloquent-curie/mnt/ContentEngine/drafts/brian/personal-linkedin/2026-03-18_personal_personal-linkedin_ai-manager-layer.md\n\nLoad the voice fingerprint skill at /sessions/charming-eloquent-curie/mnt/ContentEngine/.claude/skills/voice-fingerprint/ for the 'brian' client. I want a specific, line-level critique — not generic voice guidance. Tell me what fails and exactly where.",
+      "expected_output": "A specific voice critique that: (1) identifies the em dash on line 13 as a violation — this is a known hard ban in Brian's voice, (2) gives line-level specifics — quotes the exact text that's off, not just general feedback, (3) correctly assesses the opener (should note whether it opens on the argument or on context), (4) checks the ending — does it end when the thought ends or does it overstay?, (5) does not give generic advice like 'be more specific' without pointing to the specific sentence where specificity fails.",
+      "files": [],
+      "expectations": [
+        "The em dash on line 13 is explicitly caught and flagged as violating Brian's hard rule",
+        "The critique references specific line numbers or quotes exact text — not generic feedback",
+        "The opener is assessed correctly against Brian's rule (argument/scenario, not context-setting)",
+        "The ending is assessed — whether the post ends on the landing or overshoots",
+        "Feedback is actionable — each flag comes with a specific fix, not just identification"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write a House of Fraud company LinkedIn post announcing that HOF has added a new fraud operations guide to the library — a practitioner resource on running ops reviews. Before you write, load the voice fingerprint skill at /sessions/charming-eloquent-curie/mnt/ContentEngine/.claude/skills/voice-fingerprint/ for the 'house-of-fraud' client.\n\nSave the draft to: /sessions/charming-eloquent-curie/mnt/ContentEngine/drafts/house-of-fraud/company-linkedin/2026-03-19_company_company-linkedin_ops-review-guide-eval.md",
+      "expected_output": "A company LinkedIn post that: (1) contains no press release language ('thrilled to announce', 'proud to share', 'excited to', 'we believe'), (2) is fraud-specific — the insight wouldn't make sense if you swapped 'fraud' for 'operations' or 'marketing', (3) does not end with a question or CTA asking people to engage ('What do you think?', 'Drop a comment'), (4) speaks practitioner-to-practitioner — reads like something a 10-year fraud veteran would share, not a marketing team, (5) ends cold — no explanation of why this matters, no 'we think this is important because'.",
+      "files": [],
+      "expectations": [
+        "No press release openers or language — no 'thrilled', 'proud', 'excited', 'we believe', 'we're pleased'",
+        "Content is fraud-specific — swapping 'fraud' for a generic term would break the meaning",
+        "Does not end with a question or engagement prompt",
+        "Practitioner-to-practitioner framing — speaks to analysts and managers, not executives or vendors",
+        "Ends cold — no explanation of significance or invitation to comment after the final line"
+      ]
+    }
+  ]
+}

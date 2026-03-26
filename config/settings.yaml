@@ -1,0 +1,35 @@
+# Settings Configuration
+# Update this file with your client information and API keys
+
+---
+
+# Active client — all generation runs use this client's brand context
+# Set this to the slug of the client folder under brand/
+# Example: "meridian", "acme-corp", "founder-name"
+active_client: "example-client"
+
+# API Configuration
+# Copy these values from your accounts and add to config/.env
+# Never commit real API keys to version control
+api:
+  anthropic_api_key: "${ANTHROPIC_API_KEY}"
+  openai_api_key: "${OPENAI_API_KEY}"  # Optional — only if using Whisper transcription
+  notion_api_key: "${NOTION_API_KEY}"  # Optional — only if publishing to Notion
+  airtable_api_key: "${AIRTABLE_API_KEY}"  # Optional — only if using Airtable calendar
+
+# Publishing destinations (optional)
+# Configure these if you want to auto-publish to platforms
+publishing:
+  notion_database_id: null  # Set if using Notion as content database
+  airtable_base_id: null
+  airtable_table_id: null
+
+# Available clients in this engine
+# Add a new line when you run /new-brand [name]
+clients:
+  - slug: "example-client"
+    name: "Meridian (Example)"
+    active: true
+  # - slug: "acme-corp"
+  #   name: "Acme Corp"
+  #   active: false

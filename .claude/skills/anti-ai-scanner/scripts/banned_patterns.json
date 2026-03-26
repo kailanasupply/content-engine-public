@@ -1,0 +1,192 @@
+{
+  "version": "1.0",
+  "description": "Machine-readable banned words and sentence patterns for anti-AI scanning. Source: anti-ai-rules.md",
+
+  "banned_words": [
+    "delve", "pivotal", "tapestry", "testament", "intricate", "intricacies",
+    "meticulous", "meticulously", "vibrant", "garner", "bolstered", "fostering",
+    "enhance", "enhancing", "showcase", "showcasing", "crucial", "enduring",
+    "valuable", "groundbreaking", "renowned", "nestled", "robust", "profound",
+    "boasts", "navigate", "journey", "ecosystem", "landscape", "interplay",
+    "underscore", "underscores", "underscored", "underscoring"
+  ],
+
+  "banned_phrases": [
+    "align with",
+    "aligns with",
+    "aligned with",
+    "commitment to",
+    "stands as",
+    "serves as",
+    "marks as",
+    "in the heart of",
+    "diverse array",
+    "not only",
+    "but also",
+    "despite its",
+    "experts argue",
+    "experts say",
+    "experts suggest",
+    "industry reports",
+    "observers have noted",
+    "observers note",
+    "several publications",
+    "from x to y",
+    "highlight the",
+    "highlights the",
+    "highlighted the",
+    "key takeaway",
+    "key insight",
+    "key lesson"
+  ],
+
+  "banned_words_context_sensitive": [
+    {
+      "word": "highlight",
+      "note": "banned as a verb meaning 'to emphasize'. OK as noun (a highlight of the game). Flag verb usage.",
+      "flag_as": "highlight (verb)"
+    },
+    {
+      "word": "key",
+      "note": "banned as adjective meaning 'important' (key insight, key lesson). OK as noun (car key) or in proper nouns.",
+      "flag_as": "key (adjective)"
+    },
+    {
+      "word": "rich",
+      "note": "banned in figurative sense (rich history, rich tapestry). OK as literal (rich food, rich person).",
+      "flag_as": "rich (figurative)"
+    },
+    {
+      "word": "represents",
+      "note": "banned when it means 'is' (this represents a major shift = this is a major shift). OK in literal sense.",
+      "flag_as": "represents (as substitute for 'is')"
+    },
+    {
+      "word": "navigate",
+      "note": "banned in figurative sense (navigate challenges, navigate the landscape). OK in literal sense (navigate the road).",
+      "flag_as": "navigate (figurative)"
+    }
+  ],
+
+  "banned_patterns": [
+    {
+      "name": "em_dash",
+      "description": "Em dash (—) anywhere in content. Replace with period + new sentence, or comma.",
+      "regex": "—",
+      "severity": "hard_ban",
+      "example_bad": "The team launched it — and it worked.",
+      "fix": "The team launched it. It worked."
+    },
+    {
+      "name": "tacked_on_ing_clause",
+      "description": "Sentence ending with a present participle phrase that adds false significance. The -ing phrase annotates rather than adds meaning.",
+      "regex": ",\\s+(?:contributing|demonstrating|reflecting|positioning|showcasing|highlighting|underscoring|emphasizing|signaling|indicating|suggesting|showing|marking|representing|enabling|allowing|helping|supporting|providing|creating|building|driving|fostering|bolstering|enhancing)\\s+\\w",
+      "severity": "hard_ban",
+      "example_bad": "The team launched the product, demonstrating their commitment to innovation.",
+      "fix": "The team launched the product. [If significance is real, state it separately with evidence.]"
+    },
+    {
+      "name": "false_significance_testament",
+      "description": "Asserting significance instead of proving it with a fact.",
+      "regex": "(?:is|are|was|were)\\s+a\\s+testament\\s+to",
+      "severity": "hard_ban",
+      "example_bad": "This is a testament to their enduring commitment.",
+      "fix": "State the specific fact that proves significance instead."
+    },
+    {
+      "name": "false_significance_underscores",
+      "description": "Using 'underscores' to assert importance without evidence.",
+      "regex": "\\bunderscores?\\s+the\\b",
+      "severity": "hard_ban",
+      "example_bad": "This underscores the importance of data.",
+      "fix": "State the specific fact that proves importance instead."
+    },
+    {
+      "name": "false_significance_reflects",
+      "description": "Using 'reflects broader trends' or similar to assert significance.",
+      "regex": "reflects?\\s+(?:broader|the|a|an)\\s+(?:trend|shift|change|dynamic|pattern|movement)",
+      "severity": "hard_ban",
+      "example_bad": "This reflects broader trends in the industry.",
+      "fix": "Name the specific trend with evidence, or cut the observation."
+    },
+    {
+      "name": "not_only_but_also",
+      "description": "The 'not only X but also Y' pattern. Sounds nuanced, says nothing extra.",
+      "regex": "not\\s+only\\b.{0,80}\\bbut\\s+also\\b",
+      "severity": "hard_ban",
+      "example_bad": "Not only does this save time, but it also reduces costs.",
+      "fix": "Say the actual thing directly: 'This saves time and reduces costs.'"
+    },
+    {
+      "name": "vague_attribution_experts",
+      "description": "Attributing claims to unnamed 'experts' without a specific source.",
+      "regex": "\\bexperts?\\s+(?:argue|say|suggest|believe|note|claim|report|find|agree|warn|predict)",
+      "severity": "hard_ban",
+      "example_bad": "Experts argue that AI will transform the industry.",
+      "fix": "Name the specific expert and their claim, or own the claim yourself."
+    },
+    {
+      "name": "vague_attribution_studies",
+      "description": "Attributing claims to unnamed 'studies' or 'research'.",
+      "regex": "\\b(?:studies|research|reports?|data)\\s+(?:show|suggest|indicate|find|reveal|confirm|demonstrate)",
+      "severity": "hard_ban",
+      "example_bad": "Studies show that this approach increases revenue.",
+      "fix": "Name the specific study, or own the claim with 'In my experience...' if it's observation-based."
+    },
+    {
+      "name": "serves_as",
+      "description": "Using 'serves as' instead of 'is'. Copulative avoidance.",
+      "regex": "\\bserves?\\s+as\\s+(?:a|an|the)\\b",
+      "severity": "hard_ban",
+      "example_bad": "Gallery 825 serves as LAAA's exhibition space.",
+      "fix": "Gallery 825 is LAAA's exhibition space."
+    },
+    {
+      "name": "stands_as",
+      "description": "Using 'stands as' instead of 'is'. Copulative avoidance.",
+      "regex": "\\bstands?\\s+as\\s+(?:a|an|the)\\b",
+      "severity": "hard_ban",
+      "example_bad": "This stands as the best example of...",
+      "fix": "This is the best example of..."
+    },
+    {
+      "name": "title_case_headers",
+      "description": "Title case in markdown headers. Sentence case only.",
+      "regex": "^#{1,6}\\s+([A-Z][a-z]+(?:\\s+[A-Z][a-z]+){2,})",
+      "severity": "soft_flag",
+      "example_bad": "## Why Your Content Strategy Is Failing",
+      "fix": "## Why your content strategy is failing"
+    },
+    {
+      "name": "generic_opener_today",
+      "description": "Opening with 'In today's [adjective] world/landscape/environment'.",
+      "regex": "^(?:In today's|In the modern|In an increasingly|In a world where|As we navigate)",
+      "severity": "hard_ban",
+      "example_bad": "In today's fast-paced world, content is changing.",
+      "fix": "Start with the specific thing itself — a fact, a moment, a counter-intuitive claim."
+    },
+    {
+      "name": "have_you_ever_hook",
+      "description": "Opening with 'Have you ever...' — a generic hook that belongs to everyone.",
+      "regex": "^Have you ever\\b",
+      "severity": "hard_ban",
+      "example_bad": "Have you ever wondered why content fails?",
+      "fix": "Start with the answer, not the question."
+    },
+    {
+      "name": "as_a_professional_hook",
+      "description": "Opening with 'As a [professional/founder/leader]...' — a self-labeling opener.",
+      "regex": "^As (?:a|an) (?:professional|founder|leader|practitioner|expert|entrepreneur|operator)",
+      "severity": "hard_ban",
+      "example_bad": "As a founder, you know the challenges of building.",
+      "fix": "Start with the challenge itself, not the label."
+    }
+  ],
+
+  "notes": [
+    "hard_ban: Must fix before saving. These are on the NEVER list.",
+    "soft_flag: Surface to reviewer but does not block save. Use judgment.",
+    "Context-sensitive words require manual review — the scanner flags them as candidates, not definitive violations.",
+    "The scanner does not fix violations. It reports them. Claude or the human fixes them."
+  ]
+}

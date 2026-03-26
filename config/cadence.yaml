@@ -1,0 +1,80 @@
+# Content Cadence Rules
+# Defines how often each content format can be generated per client
+
+---
+
+# Default cadence rules (customize per client)
+# ── Generation Philosophy ──────────────────────────────────────────────────────
+# The values below are SOFT GUIDANCE, not hard enforcement.
+# The quality filter (noise_prevention) is the real gate on generation.
+# If too many drafts accumulate, raise the quality bar — do not cut generation
+# arbitrarily by lowering max_per_week. Volume is a quality problem, not a cap problem.
+# See CLAUDE.md for noise_prevention rules.
+
+default:
+  personal-linkedin:
+    max_per_week: 3
+    min_days_between: 2
+    eligible_days: ["monday", "tuesday", "wednesday", "thursday", "friday"]
+    requires_input: true
+
+  company-linkedin:
+    max_per_week: 2
+    min_days_between: 3
+    eligible_days: ["tuesday", "wednesday", "thursday"]
+    requires_input: true
+
+  newsletter:
+    max_per_month: 4
+    min_days_between: 7
+    eligible_days: []  # any day
+    requires_input: false  # can generate from archive
+
+  blog:
+    max_per_month: 2
+    min_days_between: 14
+    eligible_days: []
+    requires_input: true
+
+  twitter:
+    max_per_week: 5
+    min_days_between: 1
+    eligible_days: []
+    requires_input: true
+
+  email-sequence:
+    max_per_month: 1
+    min_days_between: 30
+    requires_campaign_brief: true
+
+  sales-asset:
+    max_per_quarter: 3
+    requires_campaign_brief: true
+
+---
+
+# Client-specific overrides (example-client)
+clients:
+  example-client:
+    personal-linkedin:
+      max_per_week: 2
+      min_days_between: 2
+
+    company-linkedin:
+      max_per_week: 1
+      min_days_between: 4
+
+    newsletter:
+      max_per_month: 1
+      frequency: "last friday of month"
+
+    blog:
+      max_per_month: 2
+
+---
+
+# Notes for operators:
+# - requires_input: true = won't generate unless new input exists that day
+# - eligible_days: restrict to certain days of week
+# - Customize these per client based on their performance and capacity
+# - Run /morning-scan to check cadence eligibility before generating

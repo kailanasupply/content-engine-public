@@ -1,0 +1,14 @@
+{
+  "client": "test-client",
+  "created": "2026-03-22",
+  "sections": {
+    "identity": "complete",
+    "voice": "pending",
+    "pillars": "pending",
+    "personas": "pending",
+    "messaging": "pending",
+    "channels": "pending"
+  },
+  "active_channels": [],
+  "notes": ""
+}

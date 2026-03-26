@@ -1,0 +1,85 @@
+# Audience Personas — [CLIENT NAME]
+# Each persona is a specific person the content is written FOR.
+# Reference persona names in content objects and campaign briefs.
+
+personas:
+
+  - id: persona_1
+    name: "[Persona Name — give them a real name, e.g. 'Strategic Sarah']"
+    role: "[Job title / role]"
+    company_type: "[e.g., B2B SaaS, agency, enterprise, solo founder]"
+    company_size: "[e.g., 10–50 employees]"
+
+    demographics:
+      age_range: ""
+      location: ""
+      experience_years: ""
+
+    goals:
+      - ""
+      - ""
+      - ""
+
+    pain_points:
+      - ""
+      - ""
+      - ""
+
+    fears:
+      - ""  # What keeps them up at night
+
+    what_they_read:
+      - ""  # Publications, newsletters, creators they follow
+
+    how_they_make_decisions: >
+      # Describe their decision-making style — fast/slow, data-driven/gut-feel,
+      # committee/solo, etc.
+
+    content_that_resonates:
+      formats: []  # e.g., [long-form, short social, case studies, video]
+      tone: ""     # e.g., "Direct, no-fluff, respects their time"
+      hooks_that_work: ""  # e.g., "Contrarian takes, specific numbers, peer stories"
+
+    primary_pillar: ""  # Which content pillar speaks most to this persona
+    is_primary_buyer: true  # true/false — are they the one who writes the check?
+
+  - id: persona_2
+    name: ""
+    role: ""
+    company_type: ""
+    company_size: ""
+
+    demographics:
+      age_range: ""
+      location: ""
+      experience_years: ""
+
+    goals:
+      - ""
+      - ""
+
+    pain_points:
+      - ""
+      - ""
+
+    fears:
+      - ""
+
+    what_they_read:
+      - ""
+
+    how_they_make_decisions: >
+
+    content_that_resonates:
+      formats: []
+      tone: ""
+      hooks_that_work: ""
+
+    primary_pillar: ""
+    is_primary_buyer: false
+
+  # Add more personas as needed — most brands have 2–4
+
+# Default persona
+# When no persona is specified in a content brief, the orchestrator uses this one.
+default_persona: persona_1

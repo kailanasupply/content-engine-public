@@ -1,0 +1,54 @@
+# ── Secrets ───────────────────────────────────────────────────────────────────
+config/.env
+config/engine.log
+config/publish_errors.log
+
+# ── Client data (never commit real voice or brand files) ──────────────────────
+# Remove this block once you've confirmed your brand/ folder has no real data
+brand/*/examples/
+.claude/skills/voice-fingerprint/*/
+
+# Exceptions — keep the template and example-client placeholders
+!brand/_template/
+!brand/example-client/
+!.claude/skills/voice-fingerprint/_template/
+!.claude/skills/voice-fingerprint/SKILL.md
+!.claude/skills/voice-fingerprint/evals/
+
+# ── Generated content (client-specific, not part of the template) ─────────────
+drafts/
+output/
+archive/2*/
+archive/evergreen-candidates/
+
+# ── Performance & learning data (client-specific) ─────────────────────────────
+performance/tracker.yaml
+performance/cadence-log.yaml
+performance/insights.md
+performance/WEEKLY_REPORT.md
+learning/company-evolution.md
+learning/voice-calibration-log.md
+learning/case-studies/
+learning/research/
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+.claude/skills/generation-log/log/generations.jsonl
+.claude/skills/performance-intelligence/cache/
+.claude/skills/evergreen-miner/log/
+.claude/skills/publish-validator/log/
+.claude/skills/adversarial-reviewer/evals/
+
+# ── Inputs (raw client material) ─────────────────────────────────────────────
+inputs/recordings/
+inputs/notes/
+inputs/briefs/
+inputs/inspiration/
+inputs/processed/
+
+# ── OS & editor junk ──────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/

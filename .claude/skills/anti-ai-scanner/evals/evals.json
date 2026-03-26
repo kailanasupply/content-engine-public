@@ -1,0 +1,45 @@
+{
+  "skill_name": "anti-ai-scanner",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Scan this draft for banned AI patterns before I save it:\n\n/sessions/charming-eloquent-curie/mnt/ContentEngine/drafts/brian/personal-linkedin/2026-03-17_personal_personal-linkedin_title-vs-leading-program.md\n\nThe scanner script is at: /sessions/charming-eloquent-curie/mnt/ContentEngine/.claude/skills/anti-ai-scanner/scripts/scan_draft.py\n\nRun it, show me the output, and tell me whether it's safe to proceed to the adversarial review.",
+      "expected_output": "Script runs, returns clean result (exit 0), output clearly states the draft is clean and safe to proceed. Agent should communicate this result clearly — not just paste the raw output.",
+      "files": [],
+      "expectations": [
+        "Script runs successfully using the skill's scan_draft.py",
+        "Output reports clean result — zero hard bans",
+        "Agent correctly interprets exit code 0 as 'clean, safe to proceed'",
+        "Agent recommends proceeding to adversarial review as the next step",
+        "Report is clearly communicated to user — not just raw terminal output dumped"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Run the anti-AI scan on this draft before I send it out:\n\n/sessions/charming-eloquent-curie/mnt/ContentEngine/.claude/skills/anti-ai-scanner/evals/test-dirty-draft.md\n\nScanner: /sessions/charming-eloquent-curie/mnt/ContentEngine/.claude/skills/anti-ai-scanner/scripts/scan_draft.py\n\nTell me what needs fixing and what the priority order should be.",
+      "expected_output": "Script catches multiple hard bans including: em dash (—), 'not only but also', 'experts argue', 'pivotal', 'testament', 'intricate', 'meticulous', 'robust', 'serves as', generic opener. Agent presents these clearly and gives actionable fix guidance — not just a dump of the raw output. Agent tells the user not to save until violations are resolved.",
+      "files": [],
+      "expectations": [
+        "Script runs and returns exit code 1 (violations found)",
+        "Em dash violation is surfaced and explained",
+        "'Not only but also' pattern is caught and flagged",
+        "'Experts argue' vague attribution is flagged",
+        "Agent clearly states this draft cannot be saved until violations are fixed",
+        "Agent gives actionable guidance on fixing — not just lists violations"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want to do a quick audit — scan all of Brian's recent personal LinkedIn drafts and give me a summary of which ones are clean and which need work. The drafts are in:\n\n/sessions/charming-eloquent-curie/mnt/ContentEngine/drafts/brian/personal-linkedin/\n\nScanner: /sessions/charming-eloquent-curie/mnt/ContentEngine/.claude/skills/anti-ai-scanner/scripts/scan_draft.py\n\nGive me a clean/dirty summary table.",
+      "expected_output": "Agent scans all .md files in the directory using the script, produces a summary table showing which drafts are clean (exit 0) and which have violations (exit 1) with violation counts. Should find that most are clean and identify any with issues. Clear, scannable output — not raw terminal dumps for every file.",
+      "files": [],
+      "expectations": [
+        "Agent scans multiple draft files using scan_draft.py — not manually reading them",
+        "Output includes a summary showing clean vs violation count per file",
+        "The test dirty draft in evals/ is NOT included (only drafts/ directory)",
+        "Agent correctly identifies all files as clean or dirty based on script exit code",
+        "Output is presented as a useful summary — not 20 raw terminal outputs concatenated"
+      ]
+    }
+  ]
+}

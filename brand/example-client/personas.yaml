@@ -1,0 +1,96 @@
+# Audience Personas — Meridian
+# Each persona is a specific person the content is written FOR.
+
+personas:
+
+  - id: ops_leader
+    name: "Operations Lauren"
+    role: "Head of Operations / VP of Ops"
+    company_type: "B2B SaaS or service company"
+    company_size: "50–500 employees"
+
+    demographics:
+      age_range: "28–42"
+      location: "US, remote-friendly"
+      experience_years: "8–15"
+
+    goals:
+      - "Make the team more productive without hiring more people"
+      - "Get executive buy-in for process improvements"
+      - "Know if her team is actually operating efficiently"
+
+    pain_points:
+      - "Manual processes she knows are broken but can't get resources to fix"
+      - "Team is overworked but leadership thinks it's just 'startup chaos'"
+      - "Can't articulate the true cost of broken operations"
+
+    fears:
+      - "That she's the only one who sees the problem"
+      - "That fixing it will cost too much"
+      - "That she'll implement the wrong solution and waste everyone's time"
+
+    what_they_read:
+      - "Operations blogs and LinkedIn posts about scaling"
+      - "Founder/CEO content about company building"
+      - "Case studies from other operations leaders"
+
+    how_they_make_decisions: >
+      Data-driven but pragmatic. Wants to see proof of concept and testimonials from
+      similar companies. Moving cautiously because she's been burned by bad consulting before.
+      Needs evidence before pitching to leadership.
+
+    content_that_resonates:
+      formats: ["long-form blog", "case studies", "specific frameworks"]
+      tone: "Direct, no-fluff, respects their time"
+      hooks_that_work: "Specific numbers from real situations, acknowledgment of common frustrations, contrarian takes on what works"
+
+    primary_pillar: "bottleneck_diagnosis"
+    is_primary_buyer: true
+
+  - id: founder_ceo
+    name: "Founder Fiona"
+    role: "Founder / CEO"
+    company_type: "B2B SaaS"
+    company_size: "20–150 employees"
+
+    demographics:
+      age_range: "25–40"
+      location: "US, Bay Area or NYC"
+      experience_years: "5–10"
+
+    goals:
+      - "Scale the company without operations becoming a bottleneck"
+      - "Keep operations costs low while maintaining quality"
+      - "Get my ops leader to stop complaining about process"
+
+    pain_points:
+      - "Operations feels like an internal cost, not a revenue driver"
+      - "Doesn't know if her operations are actually broken or just normal startup chaos"
+      - "Getting pulled into operational problems when she should be selling"
+
+    fears:
+      - "That fixing operations will slow the company down"
+      - "That consulting advice won't actually apply to her company"
+      - "That operations is a never-ending money pit"
+
+    what_they_read:
+      - "Founder/CEO content about building at scale"
+      - "Fundraising and growth content"
+      - "Some operations content if it promises business impact"
+
+    how_they_make_decisions: >
+      Results-oriented. Wants to know the ROI before committing. Prefers talking to
+      other founders who've done it. Skeptical of consultants. Needs to understand
+      why operations matters to the bottom line.
+
+    content_that_resonates:
+      formats: ["short-form LinkedIn", "founder interviews", "quick wins/case studies"]
+      tone: "Business outcome focused, no process jargon"
+      hooks_that_work: "Revenue impact, time saved (translated to business value), proof from other founders"
+
+    primary_pillar: "building_at_scale"
+    is_primary_buyer: false
+
+# Default persona
+# When no persona is specified in a content brief, the orchestrator uses Operations Lauren.
+default_persona: ops_leader
